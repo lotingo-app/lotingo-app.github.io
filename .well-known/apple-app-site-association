@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["3KD3D6628H.com.lotingo.app"],
+        "components": [
+          { "/": "/l/*", "comment": "Links of the app; the rest of the site stays in the browser." },
+          { "/": "/l", "comment": "The bare prefix, parsed like the links under it." }
+        ]
+      }
+    ]
+  }
+}
