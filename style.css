@@ -1,0 +1,262 @@
+/* Colours and fonts follow the app's design tokens (ui.designsystem). */
+:root {
+  --bg: #faf8f3;
+  --surface: #ffffff;
+  --surface-low: #f5f2eb;
+  --ink: #1d1b16;
+  --ink-2: #4d4639;
+  --muted: #7f7667;
+  --line: #e4ddd1;
+  --gold: #ffc53d;
+  --on-gold: #241a00;
+  --gold-soft: #fff0c7;
+  --gold-ink: #7a5900;
+  --teal: #1f6a5c;
+  --link: #7a5900;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15130e;
+    --surface: #1d1b16;
+    --surface-low: #211f1a;
+    --ink: #e9e2d6;
+    --ink-2: #d0c5b4;
+    --muted: #9a907f;
+    --line: #3a3630;
+    --gold-soft: #4a3700;
+    --gold-ink: #ffdea0;
+    --teal: #8dd4c3;
+    --link: #ffc53d;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); }
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.brand strong { display: block; font-size: 17px; line-height: 1.1; }
+.brand span { display: block; font-size: 12px; color: var(--muted); }
+.nav { display: flex; align-items: center; gap: 16px; font-size: 14px; }
+.nav a { color: var(--ink-2); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+.nav .lang {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+
+/* Hero */
+.hero { max-width: 820px; margin: 0 auto; padding: 64px 16px 40px; text-align: center; }
+.pill {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: var(--gold-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+.hero h1 { font-size: 44px; line-height: 1.4; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 18px; }
+.hero h1 .accent {
+  background: var(--gold);
+  border-radius: 6px;
+  color: var(--on-gold);
+  padding: 0 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.lead { max-width: 600px; margin: 0 auto 30px; font-size: 18px; color: var(--ink-2); }
+
+/* Drawn numbers, like the tokens of the app */
+.balls { display: flex; justify-content: center; gap: 10px; margin: 0 auto 28px; flex-wrap: wrap; }
+.balls span {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 900 30px/1 "Sofia Sans Extra Condensed", "Be Vietnam Pro", sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.balls span.drawn { background: var(--gold); color: var(--on-gold); border-color: var(--gold); }
+
+/* Official store badges, shown at the same visible height. The Google Play PNG carries
+   41px of transparent padding around a 564 x 168 badge, so it is scaled up and the padding
+   is cancelled with a negative margin. */
+.badges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; }
+.badge { display: block; line-height: 0; transition: transform .15s ease; }
+.badge:hover { transform: translateY(-2px); }
+.badge img { display: block; height: 48px; width: auto; }
+.badge.play img { height: 71.43px; margin: -11.71px; }
+
+/* Sections */
+.section { max-width: 1000px; margin: 0 auto; padding: 48px 16px; }
+.section h2 { text-align: center; font-size: 30px; line-height: 1.2; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; }
+.section .sub { text-align: center; max-width: 580px; margin: 0 auto 32px; color: var(--muted); }
+.band { background: var(--surface-low); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gold-soft);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+.card h3 { font-size: 16px; margin-bottom: 6px; }
+.card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+.steps { counter-reset: step; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.steps li { list-style: none; counter-increment: step; }
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  background: var(--gold);
+  color: var(--on-gold);
+  font: 900 24px/1 "Sofia Sans Extra Condensed", sans-serif;
+}
+.steps h3 { font-size: 16px; margin-bottom: 6px; }
+.steps p { font-size: 14px; color: var(--ink-2); }
+
+.checks { max-width: 620px; margin: 0 auto; display: grid; gap: 12px; }
+.checks li {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.checks li::before { content: "✓"; color: var(--teal); font-weight: 800; }
+
+.cta {
+  max-width: 960px;
+  margin: 24px auto 64px;
+  padding: 48px 24px;
+  border-radius: 24px;
+  text-align: center;
+  background: #1d1b16;
+  color: #f5f0e7;
+}
+.cta h2 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+.cta p { color: #cdc6b9; margin-bottom: 26px; }
+
+/* Text pages (privacy, support) */
+.page { max-width: 720px; margin: 0 auto; padding: 16px 16px 48px; }
+.page h1 { font-size: 32px; line-height: 1.2; margin: 24px 0 8px; }
+.page h2 { font-size: 20px; margin: 32px 0 8px; }
+.page p, .page ul { margin-bottom: 12px; }
+.page ul { padding-left: 22px; }
+.muted { color: var(--muted); }
+
+/* Footer */
+.footer { padding: 32px 16px 48px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 13px; line-height: 1.9; }
+.footer .links a { margin: 0 8px; text-decoration: none; }
+
+@media (max-width: 560px) {
+  .hero { padding: 44px 16px 28px; }
+  .hero h1 { font-size: 32px; }
+  .lead { font-size: 16px; }
+  .balls span { width: 44px; height: 44px; font-size: 26px; }
+  .section h2 { font-size: 24px; }
+  .nav { gap: 12px; }
+  .nav .hide-sm { display: none; }
+}
+
+.section h2 + .grid, .section h2 + .checks { margin-top: 28px; }
+
+/* Support page */
+.intro { font-size: 18px; color: var(--ink-2); }
+.contact {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin: 24px 0 8px;
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--gold-soft);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.contact-icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  background: var(--gold);
+}
+.page .contact h2 { margin: 0 0 6px; font-size: 20px; }
+.page .contact p { color: var(--ink-2); margin-bottom: 16px; }
+.button {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  text-decoration: none;
+}
+.button:hover { opacity: .9; }
+.page .contact .contact-mail { margin: 10px 0 0; font-size: 14px; }
+.faqs { display: grid; gap: 10px; }
+.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  font-weight: 600;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; display: inline-block; font-size: 22px; line-height: 1; color: var(--muted); transition: transform .2s ease; }
+.faq[open] summary::after { transform: rotate(45deg); }
+.page .faq p { margin: 0; padding: 0 18px 16px; color: var(--ink-2); }
+
+@media (max-width: 560px) {
+  .contact { flex-direction: column; padding: 20px; }
+}
