@@ -76,5 +76,10 @@
 <div class="links"><a href="../../vi/privacy/">Chính sách quyền riêng tư</a>·<a href="../../vi/support/">Hỗ trợ</a>·<a href="mailto:phuongnamtruong.it@gmail.com">Email</a></div>
 Không tiền, không cược.<br>© 2026 Lotingo · Truong Phuong Nam
 </footer>
+<script>
+document.querySelector(".nav .lang").addEventListener("click", function (e) {
+  try { localStorage.setItem("lotingo-lang", e.currentTarget.getAttribute("hreflang")); } catch (err) {}
+});
+</script>
 </body>
 </html>
