@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.lotingo.app",
+      "sha256_cert_fingerprints": [
+        "3B:C3:23:99:22:AE:F1:0F:AF:37:2F:86:08:70:3E:EA:9B:03:1A:AE:10:28:5F:2F:90:CD:D0:EE:DA:1F:D4:8F"
+      ]
+    }
+  }
+]
